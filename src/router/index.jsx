@@ -11,7 +11,7 @@ import About from "@/pages/public/About";
 import Contact from "@/pages/public/Contact";
 
 // Admin Pages
-import Login from "@/pages/admin/Login";
+import Login from "@/pages/admin/Login"
 import Dashboard from "@/pages/admin/Dashboard"; // Create a placeholder for this
 
 export default function AppRouter() {
