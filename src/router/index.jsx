@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import PublicLayout from "@/layouts/PublicLayout";
-import AdminLayout from "@/layouts/adminLayout";
-import ProtectedRoute from "@/router/ProtectedRoute";
+// import AdminLayout from "@/layouts/adminLayout";
+// import ProtectedRoute from "@/router/ProtectedRoute";
 
 // Public Pages
 import Home from "@/pages/public/Home";
