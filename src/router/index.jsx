@@ -12,7 +12,7 @@ import Contact from "@/pages/public/Contact";
 
 // Admin Pages
 // import Login from "@/pages/admin/Login"
-import Dashboard from "@/pages/admin/Dashboard"; // Create a placeholder for this
+// import Dashboard from "@/pages/admin/Dashboard"; // Create a placeholder for this
 
 export default function AppRouter() {
   return (
@@ -30,13 +30,13 @@ export default function AppRouter() {
       {/* <Route path="/admin/login" element={<Login />} /> */}
 
       {/* PROTECTED ADMIN ROUTES */}
-      <Route element={<ProtectedRoute />}> 
+      {/* <Route element={<ProtectedRoute />}> 
         <Route element={<AdminLayout />}>
            <Route path="/admin" element={<Dashboard />} />
         </Route>
       </Route>
 
-      <Route path='*' />
+      <Route path='*' /> */}
     </Routes>
   );
 }
