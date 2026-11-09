@@ -3,12 +3,9 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Package, 
-  Tags, 
-  Settings, 
   LogOut, 
   Menu, 
   ExternalLink,
-  Bell
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useAuth } from '@/context/AuthContext';
@@ -27,14 +24,11 @@ const AdminLayout = () => {
   const navItems = [
     { name: 'Overview', path: '/admin', icon: LayoutDashboard },
     { name: 'Products', path: '/admin/products', icon: Package },
-    { name: 'Categories', path: '/admin/categories', icon: Tags },
-    { name: 'Settings', path: '/admin/settings', icon: Settings },
   ];
 
-  // Reusable Sidebar Content
+  //  Sidebar Content
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-brand-black text-white w-full">
-      {/* Brand Header */}
       <div className="h-20 flex items-center px-6 border-b border-white/10">
         <Link to="/admin" className="flex flex-col">
           <span className="font-serif font-bold text-xl tracking-widest text-white leading-none">
@@ -46,7 +40,6 @@ const AdminLayout = () => {
         </Link>
       </div>
 
-      {/* Navigation */}
       <nav className="flex-1 py-6 px-4 space-y-2">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
@@ -69,7 +62,7 @@ const AdminLayout = () => {
         })}
       </nav>
 
-      {/* Bottom Actions */}
+    
       <div className="p-4 border-t border-white/10 space-y-2">
         <a 
           href="/" 
@@ -99,7 +92,7 @@ const AdminLayout = () => {
         <SidebarContent />
       </aside>
 
-      {/* MAIN CONTENT WRAPPER */}
+      
       <div className="flex-1 lg:ml-64 flex flex-col min-h-screen">
         
         {/* TOP NAVIGATION HEADER */}
@@ -131,10 +124,6 @@ const AdminLayout = () => {
 
           {/* Right: Actions & Profile */}
           <div className="flex items-center gap-4 md:gap-6">
-            <button className="text-gray-400 hover:text-brand-black transition-colors relative">
-              <Bell size={20} strokeWidth={1.5} />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-brand-gold rounded-full border-2 border-white"></span>
-            </button>
             
             <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
               <div className="text-right hidden md:block">

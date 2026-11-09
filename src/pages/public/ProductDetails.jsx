@@ -1,84 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { ChevronRight, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
+
 import ProductSection from '@/components/productDetail/ProductSection';
 import RelatedProducts from '@/components/productDetail/RelatedProducts';
+import { getProductById } from '@/lib/productService';
 
 const ProductDetails = () => {
-  const { slug } = useParams(); // Grabs the slug from the URL
+  // CHANGED: We now use the Firestore document ID, not a slug
+  const { id } = useParams(); 
+  const navigate = useNavigate();
+  
   const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
 
-  // Mock database of products (simulating Firebase)
-  // In the future, you will fetch this from Firestore using the slug
-  const mockDatabase = {
-    "oud-royal": {
-      id: "1",
-      name: "Oud Royal",
-      brand: "EESHERT",
-      price: 85000,
-      originalPrice: 95000,
-      size: "100ml",
-      inStock: true,
-      category: "Unisex",
-      description: "A sophisticated fragrance that opens with fresh, spicy notes before settling into a warm, woody base. Oud Royal is crafted for those who command attention without saying a word.",
-      notes: "Oud, Amber, Rose, Spices",
-      images: [
-        "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=1000&auto=format&fit=crop"
-      ]
-    },
-    "velvet-rose": {
-      id: "2",
-      name: "Velvet Rose",
-      brand: "EESHERT",
-      price: 72000,
-      originalPrice: null,
-      size: "50ml",
-      inStock: true,
-      category: "Women",
-      description: "An elegant and romantic scent. Velvet Rose captures the essence of a blooming garden at dawn, blending soft floral notes with a hint of vanilla.",
-      notes: "Rose, Vanilla, Peony",
-      images: [
-        "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1000&auto=format&fit=crop"
-      ]
-    }
-  };
-
-  // Simulate fetching data based on the URL param
   useEffect(() => {
-    // If the slug exists in mock data, set it. Otherwise, redirect or show 404.
-    if (mockDatabase[slug]) {
-      setProduct(mockDatabase[slug]);
-    } else {
-      // Fallback for demo purposes (so you can see the page)
-      setProduct(mockDatabase["oud-royal"]); 
-    }
-  }, [slug]);
+    const fetchProduct = async () => {
+      try {
+        const data = await getProductById(id);
+        
+        if (data) {
+          // Ensure the ProductSection receives an array of images
+          // We create a fake array with the single Cloudinary imageUrl.
+          // If you add multi-image support later, you'd use data.images here.
+          const formattedData = {
+            ...data,
+            images: [data.imageUrl] 
+          };
+          setProduct(formattedData);
+        } else {
+          toast.error("Product not found");
+          navigate('/shop'); // Redirect to shop if ID is invalid
+        }
+      } catch (error) {
+        toast.error("Error loading product", { description: error.message });
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  if (!product) {
-    return <div className="min-h-screen pt-40 text-center">Loading...</div>;
+    fetchProduct();
+  }, [id, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-40 flex flex-col items-center justify-center">
+        <Loader2 className="w-10 h-10 animate-spin text-brand-gold mb-4" />
+        <p className="text-gray-500 font-medium">Loading product...</p>
+      </div>
+    );
   }
+
+  if (!product) return null;
 
   // Format Price
   const formatPrice = (price) => {
+    if (!price) return '₦0';
     return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', minimumFractionDigits: 0 }).format(price);
   };
 
   // --- WHATSAPP LOGIC ---
   const handleWhatsAppOrder = () => {
-    // 1. Your friend's number (no +, no leading 0)
     const phoneNumber = "2348012345678"; 
-    
-    // 2. Current page URL
     const productUrl = window.location.href;
-
-    // 3. Build the message
     const message = `Hello EESHERT PERFUMES! I would like to order:\n\n*Product:* ${product.name}\n*Size:* ${product.size}\n*Price:* ${formatPrice(product.price)}\n*Link:* ${productUrl}\n\nIs this available?`;
-    
-    // 4. Encode and open
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
   };
@@ -98,18 +85,16 @@ const ProductDetails = () => {
         </nav>
 
         {/* MAIN PRODUCT SECTION */}
-
         <ProductSection 
-            product={product} 
-            activeImage={activeImage} 
-            setActiveImage={setActiveImage} 
-            handleWhatsAppOrder={handleWhatsAppOrder} 
-            formatPrice={formatPrice}
+          product={product} 
+          activeImage={activeImage} 
+          setActiveImage={setActiveImage} 
+          handleWhatsAppOrder={handleWhatsAppOrder} 
+          formatPrice={formatPrice}
         />
 
-        {/* RELATED PRODUCTS (Mocked) */}
-
-        <RelatedProducts />
+        {/* RELATED PRODUCTS (Mocked for now) */}
+<RelatedProducts currentProductId={id} />
 
       </div>
     </div>

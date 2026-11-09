@@ -1,7 +1,13 @@
-import AppRouter from "./router";
+import AppRouter from './router';
+import { Toaster } from "@/components/ui/sonner"; // <-- Import this
 
 function App() {
-  return <AppRouter />;
+  return (
+    <>
+      <AppRouter />
+      <Toaster position="top-right" richColors /> {/* <-- Add this */}
+    </>
+  );
 }
 
 export default App;

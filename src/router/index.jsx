@@ -1,42 +1,54 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
+// Layouts (
 import PublicLayout from "@/layouts/PublicLayout";
-// import AdminLayout from "@/layouts/adminLayout";
-// import ProtectedRoute from "@/router/ProtectedRoute";
+import AdminLayout from "@/layouts/AdminLayout";
+import ProtectedRoute from "@/router/ProtectedRoute";
 
-// Public Pages
-import Home from "@/pages/public/Home";
-import Shop from "@/pages/public/Shop";
-import ProductDetails from "@/pages/public/ProductDetails";
-import About from "@/pages/public/About";
-import Contact from "@/pages/public/Contact";
+// Loading Fallback
+import PageLoader from "@/components/ui/PageLoader";
 
-// Admin Pages
-// import Login from "@/pages/admin/Login"
-// import Dashboard from "@/pages/admin/Dashboard"; // Create a placeholder for this
+// --- LAZY LOADED PUBLIC PAGES ---
+const Home = lazy(() => import("@/pages/public/Home"));
+const Shop = lazy(() => import("@/pages/public/Shop"));
+const ProductDetails = lazy(() => import("@/pages/public/ProductDetails"));
+const About = lazy(() => import("@/pages/public/About"));
+const Contact = lazy(() => import("@/pages/public/Contact"));
+
+// --- LAZY LOADED ADMIN PAGES ---
+const Login = lazy(() => import("@/pages/admin/Login"));
+const Dashboard = lazy(() => import("@/pages/admin/Dashboard"));
+const Products = lazy(() => import("@/pages/admin/Products"));
+const ProductForm = lazy(() => import("@/pages/admin/ProductForm"));
 
 export default function AppRouter() {
   return (
-    <Routes>
-      {/* PUBLIC ROUTES */}
-      <Route element={<PublicLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/product/:slug" element={<ProductDetails />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Route>
-
-      {/* ADMIN LOGIN (Publicly accessible) */}
-      {/* <Route path="/admin/login" element={<Login />} /> */}
-
-      {/* PROTECTED ADMIN ROUTES */}
-      {/* <Route element={<ProtectedRoute />}> 
-        <Route element={<AdminLayout />}>
-           <Route path="/admin" element={<Dashboard />} />
+    // Suspense catches the loading state of any lazy component below it
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        {/* PUBLIC ROUTES */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
-      </Route>
 
-      <Route path='*' /> */}
-    </Routes>
+        {/* ADMIN LOGIN */}
+        <Route path="/admin/login" element={<Login />} />
+
+        {/* PROTECTED ADMIN */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/products" element={<Products />} />
+            <Route path="/admin/products/new" element={<ProductForm />} />
+            <Route path="/admin/products/:id/edit" element={<ProductForm />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
