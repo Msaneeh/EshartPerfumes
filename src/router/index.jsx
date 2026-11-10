@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-// Layouts (
+// Layouts
 import PublicLayout from "@/layouts/PublicLayout";
 import AdminLayout from "@/layouts/AdminLayout";
 import ProtectedRoute from "@/router/ProtectedRoute";
@@ -17,18 +17,18 @@ const About = lazy(() => import("@/pages/public/About"));
 const Contact = lazy(() => import("@/pages/public/Contact"));
 
 // --- LAZY LOADED ADMIN PAGES ---
-const Login = lazy(() => import("@/pages/admin/Login"));
+const Login = lazy(() => import("@/pages/admin/Login")); // FIXED: Added Login.jsx
 const Dashboard = lazy(() => import("@/pages/admin/Dashboard"));
 const Products = lazy(() => import("@/pages/admin/Products"));
 const ProductForm = lazy(() => import("@/pages/admin/ProductForm"));
 
 export default function AppRouter() {
   return (
-    // Suspense catches the loading state of any lazy component below it
     <Suspense fallback={<PageLoader />}>
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route element={<PublicLayout />}>
+          {/* Redirect root "/" to "/shop" (or keep Home if you have a landing page) */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
@@ -48,6 +48,10 @@ export default function AppRouter() {
             <Route path="/admin/products/:id/edit" element={<ProductForm />} />
           </Route>
         </Route>
+
+        {/* 404 NOT FOUND - REDIRECT TO SHOP */}
+        {/* The "*" catches any URL that doesn't match the above */}
+        <Route path="*" element={<Navigate to="/shop" replace />} />
       </Routes>
     </Suspense>
   );
