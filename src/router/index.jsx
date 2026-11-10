@@ -17,10 +17,10 @@ const About = lazy(() => import("@/pages/public/About"));
 const Contact = lazy(() => import("@/pages/public/Contact"));
 
 // --- LAZY LOADED ADMIN PAGES ---
-const Login = lazy(() => import("@/pages/admin/Login")); // FIXED: Added Login.jsx
-const Dashboard = lazy(() => import("@/pages/admin/Dashboard"));
-const Products = lazy(() => import("@/pages/admin/Products"));
-const ProductForm = lazy(() => import("@/pages/admin/ProductForm"));
+const Login = lazy(() => import("../pages/admin/Login"));
+const Dashboard = lazy(() => import("../pages/admin/Dashboard"));
+const Products = lazy(() => import("../pages/admin/Products"));
+const ProductForm = lazy(() => import("../pages/admin/ProductForm"));
 
 export default function AppRouter() {
   return (
