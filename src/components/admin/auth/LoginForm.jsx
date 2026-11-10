@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
 const LoginForm = ({
@@ -53,7 +53,6 @@ const LoginForm = ({
             placeholder="••••••••"
             className="w-full pl-11 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all text-sm"
           />
-          {/* Show/Hide Password Toggle */}
           <button 
             type="button"
             onClick={() => setShowPassword(!showPassword)}
@@ -63,8 +62,6 @@ const LoginForm = ({
           </button>
         </div>
       </div>
-
-      {/* Remember Me & Forgot Password */}
 
       {/* Submit Button */}
       <button 
