@@ -17,7 +17,7 @@ const About = lazy(() => import("@/pages/public/About"));
 const Contact = lazy(() => import("@/pages/public/Contact"));
 
 // --- LAZY LOADED ADMIN PAGES ---
-const Login = lazy(() => import("@/router/Login.JSX")); // FIXED: Added Login.jsx
+const Login = lazy(() => import("@/pages/admin/Login")); // FIXED: Added Login.jsx
 const Dashboard = lazy(() => import("@/pages/admin/Dashboard"));
 const Products = lazy(() => import("@/pages/admin/Products"));
 const ProductForm = lazy(() => import("@/pages/admin/ProductForm"));
