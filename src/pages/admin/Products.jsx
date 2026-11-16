@@ -7,7 +7,8 @@ import ToolBar from '@/components/admin/products/ToolBar';
 import ProductsTable from '@/components/admin/products/ProductsTable';
 import DeleteModal from '@/components/admin/products/DeleteModal';
 
-import { getAllProducts, deleteProduct } from '@/lib/productService';
+// SINGLE IMPORT (Removed the duplicate)
+import { getAllProducts, deleteProduct, toggleProductStock } from '@/lib/productService';
 
 const Products = () => {
   // --- DATA STATE ---
@@ -45,11 +46,27 @@ const Products = () => {
     }).format(price);
   };
 
-  // NOTE: Toggle stock would need a Firestore update.
-  // For now we'll add it to productService later.
+  // UPDATED: Real Firestore Toggle Logic with Optimistic UI
   const toggleStock = async (id) => {
-    // ... Will be Firestore update
-    console.log("Toggle stock for", id);
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+
+    // 1. Instantly update the UI
+    setProducts(prev => 
+      prev.map(p => p.id === id ? { ...p, inStock: !p.inStock } : p)
+    );
+
+    try {
+      // 2. Update the database
+      await toggleProductStock(id, product.inStock);
+      toast.success(`Marked as ${!product.inStock ? 'Available' : 'Sold Out'}`);
+    } catch (err) {
+      // 3. Revert if it fails
+      setProducts(prev => 
+        prev.map(p => p.id === id ? { ...p, inStock: product.inStock } : p)
+      );
+      toast.error("Failed to update stock status");
+    }
   };
 
   const openDeleteModal = (product) => {
@@ -74,7 +91,7 @@ const Products = () => {
   const categoryHandler = (e) => setCategoryFilter(e.target.value);
   const stockfilterHandler = (e) => setStockFilter(e.target.value);
 
-  // --- FILTER LOGIC (unchanged) ---
+  // --- FILTER LOGIC ---
   const filteredProducts = products.filter(product => {
     const matchesSearch = 
       product.name?.toLowerCase().includes(searchQuery.toLowerCase()) || 

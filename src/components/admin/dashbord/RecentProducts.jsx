@@ -30,7 +30,7 @@ const RecentProducts = ({ recentProducts, className = "" }) => {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-                          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-medium text-sm text-brand-black">{product.name}</span>
                       </div>

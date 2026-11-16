@@ -55,7 +55,7 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-brand-warm font-sans pb-20">
       
-      {/* HEADER */}
+      
       <div className="bg-brand-black pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
         
@@ -80,7 +80,7 @@ const Shop = () => {
           </div>
         </div>
 
-        {/* PRODUCT GRID / LOADING STATE */}
+        {/* PRODUCT  */}
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-32">
             <Loader2 className="w-10 h-10 animate-spin text-brand-gold mb-4" />

@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const whatsappNumber = "2348012345678"; 
+  const whatsappNumber = "2349038536805"; 
   const whatsappMessage = encodeURIComponent("Hello EESHERT PERFUMES, I would like to make an enquiry.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -19,15 +19,15 @@ const Navbar = () => {
 
   // TRUE LIQUID GLASS UTILITY CLASSES
   const liquidGlassBase = "bg-white/30 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_0_rgba(8,8,8,0.05)]";
-  // The inner highlight gives it that "liquid" 3D edge
+  //  liquid 3D edge
   const liquidGlassHighlight = "before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-b before:from-white/80 before:to-transparent before:-z-10";
 
   return (
     <nav className="fixed top-0 w-full z-50 px-4 py-6">
-      {/* Container with Liquid Glass */}
+      
       <div className={`max-w-7xl mx-auto ${liquidGlassBase} ${liquidGlassHighlight} rounded-full px-6 py-3 flex items-center justify-between relative`}>
         
-        {/* Left: Logo and Name */}
+        
         <div className="flex flex-col z-50 group">
           <span className="font-serif font-bold text-xl tracking-widest text-brand-black leading-none group-hover:text-brand-gold transition-colors">
             EESHERT
@@ -50,15 +50,14 @@ const Navbar = () => {
               }`}
             >
               {link.name}
-              {/* Liquid Gold Underline */}
               <span className={`absolute -bottom-1 left-0 w-full h-[1.5px] bg-brand-gold transform origin-left transition-transform duration-300 ${location.pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
             </Link>
           ))}
         </div>
 
-        {/* Right: Actions */}
+        
         <div className="flex items-center gap-4 z-50">
-          {/* WhatsApp Desktop Button */}
+         
           <a
             href={whatsappLink}
             target="_blank"
@@ -70,7 +69,7 @@ const Navbar = () => {
             <span>Chat with us</span>
           </a>
 
-          {/* Mobile Menu Toggle Button */}
+          
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-brand-black hover:text-brand-gold transition-colors p-1"
@@ -80,7 +79,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Dropdown (Also Liquid Glass) */}
+        
         <div
           className={`absolute top-[115%] left-0 w-full ${liquidGlassBase} rounded-3xl overflow-hidden transition-all duration-500 ease-in-out md:hidden ${
             isMobileMenuOpen ? 'max-h-96 opacity-100 py-6' : 'max-h-0 opacity-0 py-0 border-transparent'

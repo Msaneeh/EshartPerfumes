@@ -64,15 +64,18 @@ const ProductsTable = ({ products, totalCount, formatPrice, toggleStock, openDel
                     <td className="p-4 text-sm text-gray-600">{product.category}</td>
                     <td className="p-4 text-sm font-medium text-brand-black">{formatPrice(product.price)}</td>
                     <td className="p-4">
-                      <button 
-                        onClick={() => toggleStock(product.id)}
-                        className={`inline-flex px-2.5 py-1 rounded-full text-xs font-medium transition-colors ${
-                          product.inStock ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-                        }`}
-                      >
-                        {product.inStock ? 'Available' : 'Sold Out'}
-                      </button>
-                    </td>
+  <button 
+    onClick={() => toggleStock(product.id)}
+    className={`inline-flex px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
+      product.inStock 
+        ? 'bg-green-50 text-green-700 hover:bg-green-100' 
+        : 'bg-red-50 text-red-700 hover:bg-red-100'
+    }`}
+    title="Click to toggle stock status"
+  >
+    {product.inStock ? 'Available' : 'Sold Out'}
+  </button>
+</td>
                     <td className="p-4 text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>

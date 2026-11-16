@@ -8,7 +8,7 @@ import RelatedProducts from '@/components/productDetail/RelatedProducts';
 import { getProductById } from '@/lib/productService';
 
 const ProductDetails = () => {
-  // CHANGED: We now use the Firestore document ID, not a slug
+  
   const { id } = useParams(); 
   const navigate = useNavigate();
   
@@ -63,7 +63,7 @@ const ProductDetails = () => {
 
   // --- WHATSAPP LOGIC ---
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "2348012345678"; 
+    const phoneNumber = "2349038536805"; 
     const productUrl = window.location.href;
     const message = `Hello EESHERT PERFUMES! I would like to order:\n\n*Product:* ${product.name}\n*Size:* ${product.size}\n*Price:* ${formatPrice(product.price)}\n*Link:* ${productUrl}\n\nIs this available?`;
     const encodedMessage = encodeURIComponent(message);
@@ -75,7 +75,7 @@ const ProductDetails = () => {
       
       <div className="max-w-7xl mx-auto px-4 pt-32">
         
-        {/* BREADCRUMB */}
+        
         <nav className="flex items-center gap-2 text-xs text-gray-500 mb-8 uppercase tracking-wider">
           <Link to="/" className="hover:text-brand-gold transition-colors">Home</Link>
           <ChevronRight size={12} />

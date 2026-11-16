@@ -15,14 +15,14 @@ const LoginForm = ({
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       
-      {/* Error Message */}
+      
       {error && (
         <div className="mb-6 p-3 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm text-center">
           {error}
         </div>
       )}
 
-      {/* Email Input */}
+     
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
         <div className="relative">
@@ -39,7 +39,7 @@ const LoginForm = ({
         </div>
       </div>
 
-      {/* Password Input */}
+    
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
         <div className="relative">
@@ -63,7 +63,7 @@ const LoginForm = ({
         </div>
       </div>
 
-      {/* Submit Button */}
+      
       <button 
         type="submit"
         disabled={isLoading}

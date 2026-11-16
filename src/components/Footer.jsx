@@ -34,15 +34,15 @@ const Footer = () => {
   return (
     <footer className="bg-brand-black text-white pt-20 pb-8 px-4 relative overflow-hidden font-sans">
       
-      {/* Decorative gold glow */}
+      
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/5 blur-[120px] rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* TOP SECTION */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* Brand Column */}
+          
           <div className="lg:col-span-2 space-y-6">
             <div>
               <h3 className="font-serif text-3xl tracking-widest mb-2">EESHERT</h3>
@@ -55,10 +55,10 @@ const Footer = () => {
               Curated for those who leave a lasting impression.
             </p>
             
-            {/* Social Icons */}
+            
             <div className="flex items-center gap-3 pt-2">
               <a 
-                href="https://wa.me/2348012345678" 
+                href="https://wa.me/2349038536805" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-colors"
@@ -67,7 +67,7 @@ const Footer = () => {
                 <WhatsAppIcon size={18} />
               </a>
               <a 
-                href="https://instagram.com/eeshert" 
+                href="https://instagram.com/eeshertperfumes" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-colors"
@@ -75,17 +75,10 @@ const Footer = () => {
               >
                 <InstagramIcon size={18} />
               </a>
-              <a 
-                href="mailto:hello@eeshert.com"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-colors"
-                aria-label="Email"
-              >
-                <Mail size={18} strokeWidth={1.5} />
-              </a>
             </div>
           </div>
 
-          {/* Quick Links Column */}
+          
           <div>
             <h4 className="font-serif text-lg mb-6 text-brand-gold">Explore</h4>
             <ul className="space-y-3 text-sm">
@@ -116,21 +109,16 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Column */}
           <div>
             <h4 className="font-serif text-lg mb-6 text-brand-gold">Get in Touch</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Phone size={16} className="text-brand-gold mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                <span className="text-gray-400">+234 801 234 5678</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail size={16} className="text-brand-gold mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                <span className="text-gray-400">hello@eeshert.com</span>
+                <span className="text-gray-400">+234 9038536805</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-brand-gold mt-0.5 flex-shrink-0" strokeWidth={1.5} />
-                <span className="text-gray-400">Lagos, Nigeria</span>
+                <span className="text-gray-400">Kano, Nigeria</span>
               </li>
             </ul>
           </div>
@@ -142,10 +130,6 @@ const Footer = () => {
           <p className="text-xs text-gray-500">
             © {currentYear} EESHERT PERFUMES. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-gray-500">
-            <a href="#" className="hover:text-brand-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-brand-gold transition-colors">Terms of Service</a>
-          </div>
         </div>
 
       </div>

@@ -5,9 +5,8 @@ import LoginForm from '@/components/admin/auth/LoginForm'
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth()
 
-  // --- State (The Logic) ---
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +14,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // --- Submit Handler (The Logic) ---
+ 
     const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');

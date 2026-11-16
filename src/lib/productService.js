@@ -1,9 +1,10 @@
 import { 
   collection, addDoc, updateDoc, deleteDoc, doc, getDoc, getDocs, 
-  query, orderBy, serverTimestamp 
+  query, orderBy, serverTimestamp
 } from 'firebase/firestore';
 import { ref, deleteObject } from 'firebase/storage';
 import { db, storage } from './firebase';
+
 
 const PRODUCTS_COLLECTION = 'products';
 
@@ -114,4 +115,18 @@ export const getProductById = async (id) => {
     return { id: snapshot.id, ...snapshot.data() };
   }
   return null;
+};
+
+// 7. TOGGLE STOCK STATUS
+export const toggleProductStock = async (id, currentStatus) => {
+  try {
+    const productRef = doc(db, 'products', id);
+    await updateDoc(productRef, {
+      inStock: !currentStatus,
+      updatedAt: serverTimestamp()
+    });
+  } catch (error) {
+    console.error("Error toggling stock:", error);
+    throw error;
+  }
 };

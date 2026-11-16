@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FeaturedCollection = () => {
-  // Mock data based on the defined schema
+  // Mock data 
   const featuredProducts = [
     {
       id: "1",
@@ -59,7 +59,7 @@ const FeaturedCollection = () => {
         </Link>
       </div>
 
-      {/* Product  */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {featuredProducts.map((product) => (
           <div key={product.id} className="group flex flex-col">
@@ -101,7 +101,7 @@ const FeaturedCollection = () => {
         ))}
       </div>
 
-      {/* Mobile View All Button */}
+      
       <div className="mt-10 text-center md:hidden">
         <Link 
           to="/shop"

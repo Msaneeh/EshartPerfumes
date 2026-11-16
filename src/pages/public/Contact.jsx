@@ -59,17 +59,17 @@ const PhoneIcon = ({ size = 20, className = "" }) => (
 const Contact = () => {
   // Mock store settings (Will come from StoreContext later)
   const storeSettings = {
-    whatsappNumber: "2348012345678",
-    displayPhone: "+234 801 234 5678",
-    instagramUrl: "https://instagram.com/eeshert",
-    instagramHandle: "@eeshert",
+    whatsappNumber: "2349038536805",
+    displayPhone: "+234 802 142 5072",
+    instagramUrl: "https://instagram.com/eeshertperfumes",
+    instagramHandle: "@eeshertperfumes",
     businessHours: "Mon - Sat: 9:00 AM - 6:00 PM",
   };
 
   const whatsappMessage = encodeURIComponent("Hello EESHERT PERFUMES! I have an enquiry.");
   const whatsappLink = `https://wa.me/${storeSettings.whatsappNumber}?text=${whatsappMessage}`;
 
-  // FAQ State
+
   const [openFaq, setOpenFaq] = useState(null);
 
   const faqs = [
@@ -90,7 +90,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-brand-warm font-sans pb-20">
       
-      {/* 1. PAGE HEADER */}
+     
       <div className="bg-brand-black pt-32 pb-24 px-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
         
@@ -101,7 +101,7 @@ const Contact = () => {
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">
             Contact Us
           </h1>
-          {/* 2. SHORT INTRODUCTORY MESSAGE */}
+         
           <p className="text-gray-300 max-w-xl mx-auto">
             Have a question about a specific scent, or need help placing an order? We're here to help. The fastest way to reach us is via WhatsApp.
           </p>
@@ -112,14 +112,14 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           
-          {/* 3. PROMINENT WHATSAPP CONTACT CARD */}
+          
           <a 
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-brand-black rounded-3xl p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden transition-transform duration-300 hover:-translate-y-2"
           >
-            {/* Decorative background */}
+           
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/20 blur-3xl rounded-full translate-x-1/3 -translate-y-1/3 group-hover:bg-brand-gold/30 transition-colors"></div>
             
             <div className="relative z-10">
@@ -138,10 +138,10 @@ const Contact = () => {
             </div>
           </a>
 
-          {/* 4, 5, 6. OTHER CONTACT INFO */}
+      
           <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100 flex flex-col justify-center gap-8">
             
-            {/* Phone */}
+            
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-brand-warm rounded-full flex items-center justify-center flex-shrink-0 text-brand-gold">
                 <PhoneIcon size={20} />
@@ -170,7 +170,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Business Hours */}
+            
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-brand-warm rounded-full flex items-center justify-center flex-shrink-0 text-brand-gold">
                 <Clock size={20} strokeWidth={1.5} />
@@ -185,7 +185,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* 7. FREQUENTLY ASKED QUESTIONS */}
+        
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-serif text-brand-black text-center mb-10">Frequently Asked Questions</h2>
           

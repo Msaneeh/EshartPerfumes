@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-brand-warm font-sans pb-20">
       
-      {/* 1. HERO: ABOUT OUR BRAND */}
+      
       <div className="bg-brand-black pt-32 pb-24 px-4 relative overflow-hidden">
         {/* Subtle decorative background element */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 blur-3xl rounded-full translate-x-1/3 -translate-y-1/3"></div>
@@ -23,7 +23,7 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-4 -mt-12 relative z-20">
         
-        {/* 2. BRAND STORY & 5. LIFESTYLE IMAGERY */}
+        
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center mb-20">
           <div className="flex-1 space-y-6">
             <h2 className="text-3xl font-serif text-brand-black">Crafted for the Discerning</h2>
@@ -45,7 +45,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* 3 & 4. WHAT MAKES US DIFFERENT / QUALITY CLAIMS */}
+
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif text-brand-black mb-4">Why Choose Us?</h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
@@ -78,7 +78,7 @@ const About = () => {
           ))}
         </div>
 
-        {/* 5. WIDE LIFESTYLE IMAGERY */}
+
         <div className="mb-24 rounded-3xl overflow-hidden h-[400px] relative group">
           <img 
             src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1200&auto=format&fit=crop" 
@@ -92,7 +92,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* 6. CTA: EXPLORE COLLECTION */}
+
         <div className="text-center pb-10">
           <h2 className="text-3xl font-serif text-brand-black mb-6">Ready to find your signature?</h2>
           <Link 

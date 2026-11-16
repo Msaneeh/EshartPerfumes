@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className="relative px-4 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20 py-12 md:py-20">
       
-      {/* Left Column: Content */}
+      
       <div className="flex-1 space-y-8 relative z-10">
         
         <div className="inline-flex items-center gap-2">
@@ -26,7 +26,7 @@ const Hero = () => {
           Elevate your everyday presence with EESHERT.
         </p>
 
-        {/* CTAs */}
+       
         <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
           <Link 
             to="/shop"
@@ -45,9 +45,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right Column: Image and Decor */}
+      
       <div className="flex-1 relative w-full max-w-lg mt-12 md:mt-0">
-        {/* Decorative Background Blobs */}
+        
         <div className="absolute inset-0 transform translate-x-6 translate-y-6 md:translate-x-12 md:translate-y-12">
            <div className="w-full h-full rounded-[2rem] border-2 border-brand-gold/20"></div>
         </div>
@@ -60,7 +60,7 @@ const Hero = () => {
             alt="Luxury Perfume Photography" 
             className="w-full h-[400px] md:h-[600px] object-cover object-center"
           />
-          {/* Subtle Gradient Overlay on Image */}
+          
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
         </div>
       </div>

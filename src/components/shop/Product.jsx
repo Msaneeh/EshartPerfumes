@@ -10,15 +10,15 @@ const Product = ({ allProducts, formatPrice, setSearchQuery, setSelectedCategory
           {allProducts.map((product) => (
             <div key={product.id} className="group flex flex-col bg-white rounded-2xl p-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
               
-              {/* Image Container */}
+              
               <div className="relative overflow-hidden rounded-xl bg-brand-warm aspect-[4/5] mb-4">
                 <img 
-                  src={product.imageUrl} // CHANGED from product.image
+                  src={product.imageUrl} 
                   alt={product.name} 
                   className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${!product.inStock && 'opacity-50 grayscale'}`}
                 />
                 
-                {/* In Stock / Sold Out Badge */}
+                
                 <div className="absolute top-3 left-3">
                   {product.inStock ? (
                     <span className="bg-white/90 backdrop-blur-md text-brand-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
@@ -32,7 +32,7 @@ const Product = ({ allProducts, formatPrice, setSearchQuery, setSelectedCategory
                 </div>
               </div>
 
-              {/* Product Info */}
+              
               <div className="flex-1 flex flex-col px-2 pb-2">
                 <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1">
                   {product.brand}
@@ -49,7 +49,7 @@ const Product = ({ allProducts, formatPrice, setSearchQuery, setSelectedCategory
                     <p className="text-xs text-gray-500 mt-0.5">{product.size}</p>
                   </div>
                   
-                  {/* View Product Action (Disabled if Sold Out) */}
+                  
                   <Link 
                     to={product.inStock ? `/product/${product.id}` : '#'}
                     className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
@@ -68,7 +68,7 @@ const Product = ({ allProducts, formatPrice, setSearchQuery, setSelectedCategory
           ))}
         </div>
       ) : (
-        /* EMPTY STATE */
+       
         <div className="py-24 text-center bg-white rounded-3xl border border-gray-100 shadow-sm">
           <div className="w-16 h-16 bg-brand-warm rounded-full flex items-center justify-center mx-auto mb-6">
             <Search size={24} className="text-brand-gold" strokeWidth={1.5} />

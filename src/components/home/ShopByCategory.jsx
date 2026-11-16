@@ -25,7 +25,7 @@ const ShopByCategory = () => {
     <section className="py-20 bg-white px-4">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
+        
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-brand-black mb-4">Shop by Category</h2>
           <p className="text-gray-500 max-w-xl mx-auto">
@@ -33,7 +33,7 @@ const ShopByCategory = () => {
           </p>
         </div>
 
-        {/* Category */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {categories.map((category) => (
             <Link 
