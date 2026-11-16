@@ -5,9 +5,10 @@ import { lazy, Suspense } from "react";
 import PublicLayout from "@/layouts/PublicLayout";
 import AdminLayout from "@/layouts/AdminLayout";
 import ProtectedRoute from "@/router/ProtectedRoute";
-
-// Loading Fallback
 import PageLoader from "@/components/ui/PageLoader";
+
+// --- NORMAL IMPORT FOR LOGIN (Bulletproof for Vercel) ---
+import Login from "@/pages/admin/Login";
 
 // --- LAZY LOADED PUBLIC PAGES ---
 const Home = lazy(() => import("@/pages/public/Home"));
@@ -17,7 +18,6 @@ const About = lazy(() => import("@/pages/public/About"));
 const Contact = lazy(() => import("@/pages/public/Contact"));
 
 // --- LAZY LOADED ADMIN PAGES ---
-import Login from "@/pages/public/Login";
 const Dashboard = lazy(() => import("@/pages/admin/Dashboard"));
 const Products = lazy(() => import("@/pages/admin/Products"));
 const ProductForm = lazy(() => import("@/pages/admin/ProductForm"));
@@ -28,7 +28,6 @@ export default function AppRouter() {
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route element={<PublicLayout />}>
-          {/* Redirect root "/" to "/shop" (or keep Home if you have a landing page) */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
@@ -50,7 +49,6 @@ export default function AppRouter() {
         </Route>
 
         {/* 404 NOT FOUND - REDIRECT TO SHOP */}
-        {/* The "*" catches any URL that doesn't match the above */}
         <Route path="*" element={<Navigate to="/shop" replace />} />
       </Routes>
     </Suspense>
