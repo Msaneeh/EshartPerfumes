@@ -224,68 +224,35 @@ Sonner provides user feedback for important operations:
 ## 📂 Project Structure
 
 ```text
-src/
+EshartPerfumes/
 │
-├── components/
-│   ├── admin/
-│   │   ├── Sidebar.jsx
-│   │   ├── AdminHeader.jsx
-│   │   ├── ProductTable.jsx
-│   │   └── ProductForm.jsx
+├── node_modules/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── context/
+│   ├── layouts/
+│   ├── lib/
+│   ├── pages/
+│   ├── router/
 │   │
-│   ├── home/
-│   │   ├── Hero.jsx
-│   │   ├── FeaturedProducts.jsx
-│   │   └── Categories.jsx
-│   │
-│   ├── public/
-│   │   ├── Navbar.jsx
-│   │   ├── Footer.jsx
-│   │   └── WhatsAppButton.jsx
-│   │
-│   ├── shop/
-│   │   ├── ProductCard.jsx
-│   │   ├── ProductFilters.jsx
-│   │   └── ProductGrid.jsx
-│   │
-│   └── ui/
-│       └── Reusable UI components
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
 │
-├── context/
-│   └── AuthContext.jsx
-│
-├── layouts/
-│   ├── PublicLayout.jsx
-│   └── AdminLayout.jsx
-│
-├── lib/
-│   ├── firebase.js
-│   └── productService.js
-│
-├── pages/
-│   ├── public/
-│   │   ├── Home.jsx
-│   │   ├── Shop.jsx
-│   │   ├── ProductDetails.jsx
-│   │   ├── About.jsx
-│   │   └── Contact.jsx
-│   │
-│   └── admin/
-│       ├── Login.jsx
-│       ├── Dashboard.jsx
-│       ├── Products.jsx
-│       ├── AddProduct.jsx
-│       ├── EditProduct.jsx
-│       ├── Categories.jsx
-│       └── Settings.jsx
-│
-├── router/
-│   ├── AppRouter.jsx
-│   └── ProtectedRoute.jsx
-│
-├── App.jsx
-├── index.css
-└── main.jsx
+├── .env
+├── .gitignore
+├── .oxlintrc.json
+├── components.json
+├── index.html
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── README.md
+├── vercel.json
+└── vite.config.js
 ```
 
 ---
